@@ -66,6 +66,28 @@ async function signup(req, res) {
   }
 }
 
+async function showManager(req, res) {
+  try {
+    const manager = await ManagerRepo.find(
+      { },
+      { _id: 0, __v: 0 }
+    );
+    console.log("manager", manager);
+    if (employee) {
+      res.status(200).send(manager);
+    } else {
+      res.json({ manager: "NOT Found" });
+    }
+  } catch (error) {
+    res.status(404).json({
+      status: "fail",
+      message: err.message,
+    })
+  }
+
+
+}
+
 async function login(req, res) {
   const { email, password } = req.body;
   try {
@@ -106,4 +128,5 @@ async function login(req, res) {
 module.exports = {
   signup,
   login,
+  showManager
 };
