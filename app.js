@@ -36,7 +36,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
 
 var corsOptions = {
-    origin: "http://localhost:4200"
+    origin: ["http://localhost:4200", "https://manageremployee.netlify.app/employee"]
   };
   app.use(cors(corsOptions));
 
